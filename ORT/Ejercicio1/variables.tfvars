@@ -1,0 +1,8 @@
+aws_ami = "ami-007855ac798b5175e"
+aws_instancia_tipo = "t2.micro" 
+aws_region = "us-east-1"
+aws_az = "us-east-1a"
+vpc_cidr = "172.16.0.0/16"
+subnet_cidr = "172.16.1.0/24"
+ruta_cidr = "0.0.0.0/0"
+claves_ssh = "ssh_key"

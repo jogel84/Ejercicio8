@@ -1,11 +1,11 @@
 resource "aws_vpc" "vpc_ej1" {
-  cidr_block = "172.16.0.0/16"
-}
+  cidr_block = "${var.vpc_cidr}"
+  }
 
 resource "aws_subnet" "sub_net_us-east-1" {
   vpc_id            = aws_vpc.vpc_ej1.id
-  cidr_block        = "172.16.1.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block        = "${var.subnet_cidr}"
+  availability_zone = "${var.aws_az}"
 
   tags = {
     Name = "subnet_1"
@@ -32,11 +32,16 @@ resource "aws_route_table" "tabla_rutas" {
   vpc_id = aws_vpc.vpc_ej1.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "${var.ruta_cidr}"
     gateway_id = aws_internet_gateway.internet_gw.id
   }
    
   tags = {
     Name = "tabla_rutas"
   }
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.sub_net_us-east-1.id
+  route_table_id = aws_route_table.tabla_rutas.id
 }
