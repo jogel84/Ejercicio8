@@ -6,6 +6,7 @@ resource "aws_subnet" "sub_net_us-east-1" {
   vpc_id            = aws_vpc.vpc_ej1.id
   cidr_block        = "${var.subnet_cidr}"
   availability_zone = "${var.aws_az}"
+  map_public_ip_on_launch = "true"
 
   tags = {
     Name = "subnet_1"
