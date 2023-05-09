@@ -1,5 +1,7 @@
 resource "aws_vpc" "vpc_ej1" {
   cidr_block = "${var.vpc_cidr}"
+  enable_dns_support = true
+  enable_dns_hostnames = true
   }
 
 resource "aws_subnet" "sub_net_us-east-1" {
@@ -10,14 +12,6 @@ resource "aws_subnet" "sub_net_us-east-1" {
 
   tags = {
     Name = "subnet_1"
-  }
-}
-
-resource "aws_network_interface" "nic_instancia" {
-  subnet_id   = aws_subnet.sub_net_us-east-1.id
-
-  tags = {
-    Name = "primary_network_interface"
   }
 }
 
