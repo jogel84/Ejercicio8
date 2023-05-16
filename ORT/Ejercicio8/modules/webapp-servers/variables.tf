@@ -29,4 +29,4 @@ variable "nombre_instancia" {
 
 variable "comanditos" {
   type = list(string)
-}  
+} 

@@ -52,3 +52,8 @@ variable "comandos_deploy" {
   type = list(string)
   description = "Lista de comandos para ejecutar"
 }
+
+variable "comandos_db" {
+  type = list(string)
+  description = "Lista de comandos para ejecutar"
+}

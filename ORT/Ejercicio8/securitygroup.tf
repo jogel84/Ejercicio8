@@ -1,6 +1,6 @@
-resource "aws_security_group" "allow_ssh_http" {
-  name        = "22/80_tcp"
-  description = "Permite 22/80 tcp inbound traffic"
+resource "aws_security_group" "allow_ssh_http_mysql" {
+  name        = "22/80/3306_tcp"
+  description = "Permite 22/80/3306 tcp inbound traffic"
   vpc_id      = aws_vpc.vpc_ej8.id
 
   ingress {
@@ -19,8 +19,17 @@ resource "aws_security_group" "allow_ssh_http" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description      = "MYSQL"
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "tcp"
+    cidr_blocks      = [var.vpc_cidr]
+  }
+
+
   tags = {
-    Name = "allow_ssh_http"
+    Name = "allow_ssh_http_mysql"
   }
   
   egress {
