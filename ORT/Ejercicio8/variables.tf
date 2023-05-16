@@ -53,7 +53,17 @@ variable "comandos_deploy" {
   description = "Lista de comandos para ejecutar"
 }
 
-variable "comandos_db" {
-  type = list(string)
-  description = "Lista de comandos para ejecutar"
+variable "rds_user" {
+  type = string
+  description = "Usuario rds"
+}
+
+variable "rds_password" {
+  type = string
+  description = "Contraseña rds"
+}
+
+variable "rds_dbname" {
+  type = string
+  description = "Nombre de la BD RDS"
 }
